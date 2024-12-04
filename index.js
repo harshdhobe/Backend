@@ -1,4 +1,6 @@
-//HTTP Server in node js with logs
+
+/*
+HTTP Server in node js with logs
 
 const http = require("http");
 const { console, url } = require("inspector");
@@ -24,3 +26,19 @@ const myserver = http.createServer((req, res) => {
 });
 
 myserver.listen(8000);
+*/
+
+// Express Server
+const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => {
+    return res.send("Hello from Home page!");
+})
+
+app.get("/about", (req, res) => {
+    return res.send(`Hello ${req.query.name} from about page`);
+
+})
+
+app.listen(8000, () => console.log("Server started"));
