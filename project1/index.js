@@ -4,6 +4,13 @@ const users = require("./MOCK_DATA.json");
 const fs = require("fs");
 const PORT = 8001;
 
+//Middleware 
+app.use((req, res, next) => {
+    fs.appendFile("log.txt", `\n${Date.now()}:${req.method} :${req.path}`, (err, data) => {
+        next();
+    });
+})
+
 app.get("/api/users", (req, res) => {
     return res.json(users);
 });
